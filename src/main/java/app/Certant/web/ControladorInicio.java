@@ -133,6 +133,13 @@ public class ControladorInicio {
 
     @GetMapping("/eliminar/{idVehiculo}")
     public String eliminar(Vehiculo vehiculo) {
+        Vehiculo vAux = vehiculoService.encontrarVehiculo(vehiculo);
+        var listaInspecciones = inspeccionService.listarInspecciones();
+        for(Inspeccion i : listaInspecciones){
+            if(i.getVehiculo().equals(vAux)){
+                inspeccionService.eliminar(i);
+            }
+        }
         vehiculoService.eliminar(vehiculo);
         return "redirect:/ListadoAutomotor";
     }

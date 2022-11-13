@@ -4,6 +4,7 @@ import app.Certant.domain.Dbidata;
 
 public class InspeccionData {
 
+  
     public static String dbidataApto(Dbidata db){
         if(db.getContaminacion().equals("rechazado") ||
                 db.getChasis().equals("rechazado") ||
