@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+        <title>Listado Automotor</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Listado del Automotor</h1>
+        <div th:if="${vehiculos != null and !vehiculos.empty}">
+            <table border="1">
+                <tr>
+                    <th>Dominio</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Propietario</th>
+                    <th>Borrar</th>
+                    <th>Modificar</th>
+                </tr>
+                <tr th:each="vehiculo : ${vehiculos}">
+                    <td th:text="${vehiculo.dominio}"></td>
+                    <td th:text="${vehiculo.marca}"></td>
+                    <td th:text="${vehiculo.modelo}"></td>
+                    <td th:text="${vehiculo.duenio.nombre}"></td> 
+                    <td><a th:href="@{/eliminar/} + ${vehiculo.idVehiculo}" th:text="Eliminar"/></td>
+                    <td><a th:href="@{/editarVehiculo/} + ${vehiculo.idVehiculo}" th:text="Modificar"/></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${vehiculos == null or vehiculos.empty}">
+            Tabla vacia!
+        </div>
+        
+        <span><a href="/" th:text="Regresar"></a></span>
+    </body>
+</html>

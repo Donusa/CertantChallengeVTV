@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Listado Propietarios</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Propietarios</h1>
+        <div th:if="${propietarios != null and !propietarios.empty}">
+            <table border="1">
+                <tr>
+                    <th>Nombre</th>
+                    <th>DNI / Pasaporte</th>
+                    <th>Modificar</th>
+                    <td>Inspeccionar</td>
+                </tr>
+                <tr th:each="propietario : ${propietarios}">
+                    <td th:text="${propietario.nombre}"></td>
+                    <td th:text="${propietario.doc}"></td>
+                    <td><a th:href="@{/editar/} + ${propietario.idDuenio}" th:text="Modificar"/></td>
+                    <td><a th:href="@{/VehiculosRegistrados/} + ${propietario.idDuenio}" th:text="Inspeccionar"/></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${propietarios == null or propietarios.empty}">
+            Tabla vacia!
+        </div>
+        <br/>
+        <span><a th:href="@{/modificarDuenio}" th:text="'Agregar nuevo propietario'"></a></span>
+        <br/>
+        <span><a href="/" th:text="Regresar"></a></span>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Revision</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Revision</h1>
+        <form th:action="@{/guardadoPostRevision}" method="post" th:object="${inspeccion}">
+            <div th:field="${id}" th:object="${inspeccion}"/>
+            <p th:utext="${inspeccion.observaciones}"></p>
+            <br/>
+            <span>Se arreglaron los problemas listados?</span>
+            <span><input type="radio" th:field="*{estado}" th:value="apto"/>si</span>
+            <span><input type="radio" th:field="*{estado}" th:value="rechazado"/>no</span>
+            <br/>
+            <input type="submit" name="guardarRevision" value="Guardar"/>
+        </form>
+    </body>
+</html>

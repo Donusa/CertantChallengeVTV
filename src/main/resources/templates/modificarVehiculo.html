@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Datos del Automotor</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Datos del Automotor</h1>
+        <a th:href="@{/}">Regresar</a>
+        <br/>
+        <form th:action="@{/guardarVehiculo}" method="post" th:object="${vehiculo}">
+            <input type="hidden" name="idVehiculo" th:field="*{idVehiculo}"/>
+            <label for="dominio">Dominio : </label>
+            <input type="text" name="dominio" th:field="*{dominio}"/>
+            <span th:if="${#fields.hasErrors('dominio')}" th:errors="*{dominio}"></span>
+            <br/>
+            <label for="marca">Marca : </label>
+            <input type="text" name="marca" th:field="*{marca}"/>
+            <span th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></span>
+            <br/>
+            <label for="modelo">Modelo : </label>
+            <input type="text" name="modelo" th:field="*{modelo}"/>
+            <span th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}"></span>
+            <br/>
+            <input type="submit" name="guardarVehiculo" value="GuardarVehiculo"/>
+        </form>
+    </body>
+</html>

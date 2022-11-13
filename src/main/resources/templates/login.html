@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Login VTV - Certant</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <form name="f" th:action="@{/login}" method="post">
+            <fieldset>
+                <legend>Iniciar Sesion</legend>
+                <div th:if="${param.error}" class="alert alert-error">
+                    Usuario y/o Contraseña incorrecto(s)
+                </div>
+                <div th:if="${param.logout}" class="alert alert-success">
+                    Sesion cerrada correctamente
+                </div>
+                <label for="username">Nombre de Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Usuario"/>
+                <br/>
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Contraseña"/>
+                <br/>
+                <div class="form-actions">
+                    <button type="submit" class="btn>">Iniciar Sesion</button>
+                </div>
+            </fieldset>
+        </form>
+    </body>
+</html>

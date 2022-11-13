@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Inicio</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Inicio</h1>
+        <span><a th:href="@{/ListadoDuenios}" th:text="'Realizar inspeccion'"></a></span>
+        <br/>
+        <span><a th:href="@{/ListadoAutomotor}" th:text="'Listar/Modificar Vehiculos'"></a></span>
+        <br/>
+        <form method="POST" th:action="@{/logout}">
+            <a href="#" onclick="this.parentNode.submit();">Cerrar sesion</a>
+        </form>
+    </body>
+</html>

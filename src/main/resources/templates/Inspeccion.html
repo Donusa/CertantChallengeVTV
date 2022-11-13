@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Evaluacion Automotr</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <div th:text="${vehiculo.marca + ' ' + vehiculo.modelo + ' de dominio : ' + vehiculo.dominio}"/>
+        <br/>
+        <form th:action="@{/idataManagment}" method="post" th:object="${idata}">
+            <div th:object="${vehiculo}"></div>
+            <div th:field="${id}" th:object="${idata}"></div>
+            <table border ="1">
+                <tr>
+                    <th>Tipo de Evaluacion</th>
+                    <th>Apto</th>
+                    <th>Condicional</th>
+                    <th>Rechazado</th>
+                </tr>
+                <tr>
+                    <td>Luces</td>
+                    <td><input type="radio" th:name="luces" th:field="*{luces}" th:value="apto" required="required"/></td>
+                    <td><input type="radio" th:name="luces" th:field="*{luces}" th:value="condicional"/></td>
+                    <td><input type="radio" th:name="luces" th:field="*{luces}" th:value="rechazado"/></td>
+                </tr>
+                <tr>
+                    <td>Patente</td>
+                    <td><input type="radio" th:name="patente" th:field="*{patente}" th:value="apto" required="required"/></td>
+                    <td><input type="radio" th:name="patente" th:field="*{patente}" th:value="condicional"/></td>
+                    <td><input type="radio" th:name="patente" th:field="*{patente}" th:value="rechazado"/></td>
+                </tr>
+                <tr>
+                    <td>Espejos</td>
+                    <td><input type="radio" th:name="espejos" th:field="*{espejos}" th:value="apto" required="required"/></td>
+                    <td><input type="radio" th:name="espejos" th:field="*{espejos}" th:value="condicional"/></td>
+                    <td><input type="radio" th:name="espejos" th:field="*{espejos}" th:value="rechazado"/></td>
+                </tr>
+                <tr>
+                    <td>Chasis</td>
+                    <td><input type="radio" th:name="chasis" th:field="*{chasis}" th:value="apto" required="required"/></td>
+                    <td><input type="radio" th:name="chasis" th:field="*{chasis}" th:value="condicional"/></td>
+                    <td><input type="radio" th:name="chasis" th:field="*{chasis}" th:value="rechazado"/></td>
+                </tr>
+                <tr>
+                    <td>Vidrios</td>
+                    <td><input type="radio" th:name="vidrios" th:field="*{vidrios}" th:value="apto" required="required"/></td>
+                    <td><input type="radio" th:name="vidrios" th:field="*{vidrios}" th:value="condicional"/></td>
+                    <td><input type="radio" th:name="vidrios" th:field="*{vidrios}" th:value="rechazado"/></td>
+                </tr>
+                <tr>
+                    <td>Seguridad y Emergencia</td>
+                    <td><input type="radio" th:name="seguridadEmergencia" th:field="*{seguridadEmergencia}" th:value="apto" required="required"/></td>
+                    <td><input type="radio" th:name="seguridadEmergencia" th:field="*{seguridadEmergencia}" th:value="condicional"/></td>
+                    <td><input type="radio" th:name="seguridadEmergencia" th:field="*{seguridadEmergencia}" th:value="rechazado"/></td>
+                </tr>
+                <tr>
+                    <td>Suspension</td>
+                    <td><input type="radio" th:name="suspension" th:field="*{suspension}" th:value="apto" required="required"/></td>
+                    <td><input type="radio" th:name="suspension" th:field="*{suspension}" th:value="condicional"/></td>
+                    <td><input type="radio" th:name="suspension" th:field="*{suspension}" th:value="rechazado"/></td>
+                </tr>
+                <tr>
+                    <td>Direccion y Tren Delantero</td>
+                    <td><input type="radio" th:name="dirTrenDelantero" th:field="*{dirTrenDelantero}" th:value="apto" required="required"/></td>
+                    <td><input type="radio" th:name="dirTrenDelantero" th:field="*{dirTrenDelantero}" th:value="condicional"/></td>
+                    <td><input type="radio" th:name="dirTrenDelantero" th:field="*{dirTrenDelantero}" th:value="rechazado"/></td>
+                </tr>
+                <tr>
+                    <td>Frenos</td>
+                    <td><input type="radio" th:name="frenos" th:field="*{frenos}" th:value="apto" required="required"/></td>
+                    <td><input type="radio" th:name="frenos" th:field="*{frenos}" th:value="condicional"/></td>
+                    <td><input type="radio" th:name="frenos" th:field="*{frenos}" th:value="rechazado"/></td>
+                </tr>
+                <tr>
+                    <td>Luces</td>
+                    <td><input type="radio" th:name="contaminacion" th:field="*{contaminacion}" th:value="apto" required="required"/></td>
+                    <td><input type="radio" th:name="contaminacion" th:field="*{contaminacion}" th:value="condicional"/></td>
+                    <td><input type="radio" th:name="contaminacion" th:field="*{contaminacion}" th:value="rechazado"/></td>
+                </tr>
+            </table>
+            <br/>
+            <input type="submit" name="guardarInspeccion" value="Guardar"/>
+        </form>
+
+    </body>
+</html>

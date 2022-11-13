@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+        <title>Inspeccion</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <div>
+            <div>Vehiculos a nombre de : <span th:text="${duenio.nombre}"></span></div>
+            <br/>
+            <span>Seleccione vehiculo para inspeccionar o ingrese uno nuevo</span>
+            <div th:if="${listaVehiculos != null and !listaVehiculos.empty}">
+                <table border="1">
+                    <tr>
+                        <th>Dominio</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Propietario</th>
+                        <th>Seleccionar</th>
+                    </tr>
+                    <tr th:each="vehiculo : ${listaVehiculos}">
+                        <div th:if="${vehiculo.duenio.idDuenio == duenio.idDuenio}">
+                            <td th:text="${vehiculo.dominio}"></td>
+                            <td th:text="${vehiculo.marca}"></td>
+                            <td th:text="${vehiculo.modelo}"></td>
+                            <td th:text="${vehiculo.duenio.nombre}"></td> 
+                            <td><a th:href="@{/InspeccionarVehiculo/} + ${vehiculo.idVehiculo}" th:text="Seleccionar"/></td>
+                        </div>
+                    </tr>
+                </table>
+                
+               <a th:href="@{/nuevo/} + ${duenio.idDuenio}" th:text="'Nuevo Vehiculo'"/>
+               <span><a href="/ListadoDuenios" th:text="Regresar"></a></span>
+            </div>
+        </div>
+    </body>
+</html>

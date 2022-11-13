@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Datos del Automotor</h1>
+        <a th:href="@{/ListadoDuenios}">Regresar</a>
+        <br/>
+        <form th:action="@{/guardar}" method="post" th:object="${duenio}">
+            <input type="hidden" name="idDuenio" th:field="*{idDuenio}"/>
+            <label for="nombre">Nombre y Apellido : </label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+            <br/>
+            <label for="doc">DNI / Pasaporte : </label>
+            <input type="text" name="doc" th:field="*{doc}"/>
+            <span th:if="${#fields.hasErrors('doc')}" th:errors="*{doc}"></span>
+            <br/>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+    </body>
+</html>
